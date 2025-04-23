@@ -9,7 +9,7 @@ class RestaurantPlaceAdmin(admin.ModelAdmin):
     search_fields = ("name", "description", "extra")
 
     def image_preview(self, obj):
-        if obj.image:
+        if obj.image_url:
             return f"<img src='{obj.image.url}' width='60' />"
         return "-"
     image_preview.allow_tags = True
