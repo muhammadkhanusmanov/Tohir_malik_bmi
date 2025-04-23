@@ -1,5 +1,6 @@
 from django.db import models
 from datetime import datetime, timedelta
+from decimal import Decimal  # Add this import
 
 class RestaurantPlace(models.Model):
     PLACE_TYPE_CHOICES = [
@@ -61,12 +62,12 @@ class Reservation(models.Model):
     
     @property
     def full_total_price(self):
-        return self.get_place_price() + self.total_order_price
+        return self.get_total_price() + self.total_order_price  # Use get_total_price here
     
     def get_total_price(self):
         hours = self.duration_hours()
         extra_hours = max(hours - 1, 0)
-        return extra_hours * self.place.hourly_rate
+        return Decimal(extra_hours) * self.place.hourly_rate  # Convert extra_hours to Decimal
 
     def __str__(self):
         return f"{self.full_name} ({self.date} {self.start_time}-{self.end_time})"

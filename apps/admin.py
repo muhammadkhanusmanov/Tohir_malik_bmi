@@ -33,14 +33,14 @@ class DishAdmin(admin.ModelAdmin):
 
 @admin.register(Reservation)
 class ReservationAdmin(admin.ModelAdmin):
-    list_display = ("full_name", "phone_number", "place", "date", "start_time", "end_time", "is_confirmed", "get_place_price", "total_order_price", "full_total_price")
+    list_display = ("full_name", "phone_number", "place", "date", "start_time", "end_time", "is_confirmed", "get_total_price", "total_order_price", "full_total_price")
     list_filter = ("date", "is_confirmed")
     search_fields = ("full_name", "phone_number")
     readonly_fields = ("created_at",)
 
-    def get_place_price(self, obj):
-        return obj.get_place_price()
-    get_place_price.short_description = "Joy narxi"
+    def get_total_price(self, obj):  # Updated method name
+        return obj.get_total_price()
+    get_total_price.short_description = "Joy narxi"
 
     def total_order_price(self, obj):
         return obj.total_order_price
