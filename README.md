@@ -64,11 +64,71 @@
   - **Error (400):**
     ```json
     {
-        "error": "Bu vaqtda bu joy allaqachon band qilingan."
+        "error": "Bu vaqtda bu joy allaqachon band qilingan.",
+        "conflicting_reservations": [
+            {"full_name": "John Doe", "start_time": "18:00", "end_time": "20:00"},
+            ...
+        ]
     }
     ```
 
-#### 3. Admin Reservation List
+#### 3. Create Place
+- **Endpoint:** `/admin/places/`
+- **Method:** `POST`
+- **Request Body:**
+  ```json
+  {
+      "name": "New Restaurant",
+      "location": "123 Main St, City",
+      "capacity": 50
+  }
+  ```
+- **Response:**
+  - **Success (201):**
+    ```json
+    {
+        "id": 1,
+        "name": "New Restaurant",
+        "location": "123 Main St, City",
+        "capacity": 50
+    }
+    ```
+  - **Error (400):**
+    ```json
+    {
+        "error": "Invalid data provided."
+    }
+    ```
+
+#### 4. Create Dish
+- **Endpoint:** `/admin/dishes/`
+- **Method:** `POST`
+- **Request Body:**
+  ```json
+  {
+      "name": "Pasta",
+      "description": "Delicious pasta with tomato sauce.",
+      "price": 12.99
+  }
+  ```
+- **Response:**
+  - **Success (201):**
+    ```json
+    {
+        "id": 1,
+        "name": "Pasta",
+        "description": "Delicious pasta with tomato sauce.",
+        "price": 12.99
+    }
+    ```
+  - **Error (400):**
+    ```json
+    {
+        "error": "Invalid data provided."
+    }
+    ```
+
+#### 5. Admin Reservation List
 - **Endpoint:** `/admin/reservations/`
 - **Method:** `GET`
 - **Response:**
@@ -86,7 +146,7 @@
     ]
     ```
 
-#### 4. Confirm Reservation
+#### 6. Confirm Reservation
 - **Endpoint:** `/admin/reservations/<int:pk>/confirm/`
 - **Method:** `PATCH`
 - **Response:**
@@ -103,7 +163,7 @@
     }
     ```
 
-#### 5. Top Dishes
+#### 7. Top Dishes
 - **Endpoint:** `/admin/stats/top-dishes/`
 - **Method:** `GET`
 - **Response:**
@@ -115,7 +175,7 @@
     ]
     ```
 
-#### 6. Peak Times
+#### 8. Peak Times
 - **Endpoint:** `/admin/stats/peak-times/`
 - **Method:** `GET`
 - **Response:**
