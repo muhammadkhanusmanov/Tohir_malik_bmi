@@ -79,8 +79,11 @@
   ```json
   {
       "name": "New Restaurant",
-      "location": "123 Main St, City",
-      "capacity": 50
+      "capacity": 50,
+      "description": "A cozy place for family gatherings.",
+      "extra": "Additional information about the place.",
+      "image_url": "http://example.com/image.jpg",
+      "hourly_rate": 100.00
   }
   ```
 - **Response:**
@@ -89,8 +92,11 @@
     {
         "id": 1,
         "name": "New Restaurant",
-        "location": "123 Main St, City",
-        "capacity": 50
+        "capacity": 50,
+        "description": "A cozy place for family gatherings.",
+        "extra": "Additional information about the place.",
+        "image_url": "http://example.com/image.jpg",
+        "hourly_rate": "100.00"
     }
     ```
   - **Error (400):**
@@ -107,8 +113,11 @@
   ```json
   {
       "name": "Pasta",
+      "category": "main",
+      "price": 12.99,
       "description": "Delicious pasta with tomato sauce.",
-      "price": 12.99
+      "image": "http://example.com/image.jpg",
+      "image_url": "http://example.com/image.jpg"
   }
   ```
 - **Response:**
@@ -117,8 +126,11 @@
     {
         "id": 1,
         "name": "Pasta",
+        "category": "main",
+        "price": 12.99,
         "description": "Delicious pasta with tomato sauce.",
-        "price": 12.99
+        "image": "http://example.com/image.jpg",
+        "image_url": "http://example.com/image.jpg"
     }
     ```
   - **Error (400):**
